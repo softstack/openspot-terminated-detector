@@ -1,0 +1,11 @@
+
+service: openspot-terminated-detector
+
+provider:
+  name: aws
+  runtime: python2.7
+
+
+functions:
+  detect:
+    handler: handler.detect
