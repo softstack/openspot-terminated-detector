@@ -8,4 +8,4 @@ provider:
 
 functions:
   detect:
-    handler: handler.detect
+    handler: functions/api/spot_instance_terminated_resource.handler
