@@ -1,0 +1,29 @@
+
+service: openspot-terminated-detectors
+
+provider:
+  name: aws
+  iamRoleStatements:
+  - Effect: "Allow"
+    Action:
+      - "ec2:*"
+    Resource: "*"
+  - Effect: "Allow"
+    Action:
+      - "autoscaling:*"
+    Resource: "*" 
+  runtime: python3.8
+
+
+functions:
+  detect:
+    handler: functions/api/spot_instance_terminated_resource.detect
+
+    events:
+      - cloudwatchEvent:
+          name: 'spot_serverless'
+          event:
+            source:
+              - "aws.ec2"
+            detail-type:
+              - "EC2 Spot Instance Interruption Warning"
