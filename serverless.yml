@@ -1,9 +1,9 @@
 
-service: openspot-terminated-detector
+service: openspot-terminated-detectors
 
 provider:
   name: aws
-  runtime: python2.7
+  runtime: python3.8
 
 
 functions:
